@@ -2,9 +2,26 @@ import { CarProps, FilterProps } from "@/types";
 
 export async function fetchCars(filters: FilterProps){
     const {fuel, year, manufacturer,model, limit} = filters
+    const queryParams = [];
 
-    const url = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&
-    year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`;
+    if (manufacturer) {
+        queryParams.push(`make=${manufacturer}`);
+    }
+    if (year) {
+        queryParams.push(`year=${year}`);
+    }
+    if (model) {
+        queryParams.push(`model=${model}`);
+    }
+    if (limit) {
+        queryParams.push(`limit=${limit}`);
+    }
+    if (fuel) {
+        queryParams.push(`fuel_type=${fuel}`);
+    }
+
+    const url = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?${queryParams.join('&')}`;
+
     const options = {
         method: 'GET',
         headers: {

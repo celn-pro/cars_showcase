@@ -45,7 +45,7 @@ const SearchBar = ({setManufacturer, setModel}) => {
 
             <div className="searchbar__item">
                 <Image 
-                    src="/searchModel-icon.png"
+                    src="/model-icon.png"
                     width={25}
                     height={25}
                     className="absolute w-[20px] h-[20px] ml-4 "
